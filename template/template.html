@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, userAccount-scalable=no">
+
+    <name>{{project.name}} Review Sprint {{sprint.number}}</name>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/eon.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="eon-de-navbar__topline">
+    <div class="eon-de-navbar__topline__left"></div>
+    <div class="eon-de-navbar__topline__right"></div>
+    <div class="eon-de-navbar__topline__narrow-right"></div>
+</div>
+<div class="reveal">
+    <div class="slides">
+        <!-- Initial slide -->
+        <section data-background-color="#ff0000">
+            <h1>{{project.name}}</h1>
+            <h2>Review Sprint {{sprint.number}}</h2>
+            {{#sprint.team}}
+            <h3>Team {{sprint.team}}</h3>
+            {{/sprint.team}}
+        </section>
+
+
+        <!-- Sprint Summary -->
+        <section>
+            <h2>Sprint Goal</h2>
+            <p>{{jiraSprint.goal}}</p>
+            <h2>Stats</h2>
+            <table>
+                <tbody>
+                <tr>
+                    <td>Stories completed:</td>
+                    <td>{{stats.storyCount}}</td>
+                </tr>
+                <tr>
+                    <td>Bugs completed:</td>
+                    <td>{{stats.bugCount}}</td>
+                </tr>
+                <tr>
+                    <td>Commitment:</td>
+                    <td>{{sprint.commitment}} SP</td>
+                </tr>
+                <tr>
+                    <td>Velocity:</td>
+                    <td>{{stats.estimate}} SP</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Stories -->
+        <section>
+            <section data-background-color="#1ea2b1">
+                <h1>Stories</h1>
+            </section>
+            {{#stories}}
+            <section>
+                <h2>[{{key}}] {{summary}}</h2>
+                <p>{{description}}</p>
+                <ul>
+                    <li>Type: {{type}}</li>
+                    <li>Status: {{status}}</li>
+                    <li>Story Points: {{estimate}}</li>
+                </ul>
+            </section>
+            {{/stories}}
+        </section>
+
+        <!-- Bugs -->
+        <section>
+            <section data-background-color="#1ea2b1">
+                <h1>Bugs</h1>
+            </section>
+            {{#bugs}}
+            <section>
+                <h2>[{{key}}] {{summary}}</h2>
+                <p>{{description}}</p>
+                <ul>
+                    <li>Type: {{type}}</li>
+                    <li>Status: {{status}}</li>
+                    <li>Story Points: {{estimate}}</li>
+                </ul>
+            </section>
+            {{/bugs}}
+        </section>
+        <section data-background-color="#1ea2b1">
+            <h1>Outlook: What´s coming next</h1>
+        </section>
+        <section data-background-color="#ff0000">
+            <h1>Thank You!</h1>
+        </section>
+    </div>
+</div>
+
+<script src="js/reveal.js"></script>
+<script src="js/Chart.bundle.min.js"></script>
+
+<script>
+    Reveal.initialize({});
+</script>
+</body>
+</html>
